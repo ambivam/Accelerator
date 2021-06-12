@@ -3,7 +3,8 @@ package com.accelerator.automation.runners;
 
 
 
-import cucumber.api.CucumberOptions;
+/*import cucumber.api.CucumberOptions;*/
+import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(glue = {"com.beachbody.automation.stepdefs","com.beachbody.automation.hooks"}, 
@@ -16,7 +17,7 @@ plugin = { "pretty", "json:target/cucumber-reports/Cucumber.json" },
 		 * "html:target/reports/htmlreport","json:target/cucumber.json",
 		 * "html:target/site/cucumber-pretty"},
 		 */
-features = "src/test/resources/features/e2e/TCID_C4870203.feature")
+features = "src/test/resources/features/ECOM/AccountsPage.feature")
 
 
 public class DefaultRunner_CucumberReport extends AbstractTestNGCucumberParallelTests {

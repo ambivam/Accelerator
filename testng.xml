@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel = "tests" thread-count="4">
+<suite name="Suite" parallel = "tests" thread-count="5">
   <test name="Test1"  >
     <!--Driver type, Make sure to choose one of this (Sauce/Grid/Local)  don't choose whatever you need -->
-    <parameter name="driverType" value="sauce" />
+    <parameter name="driverType" value="local" />
 
     <!-- App Related Properties -->
     <parameter name="locale" value="US_en" />
@@ -25,7 +25,7 @@
 
     <!-- Test case to run -->
     <classes>
-      <class name="DefaultRunner"/>
+      <class name="com.accelerator.automation.runners.DefaultRunner"/>
     </classes>
   </test>
 

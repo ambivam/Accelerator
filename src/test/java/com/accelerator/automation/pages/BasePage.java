@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 /**
  * Super Class of All Pages, every page should inherit this page
  */
@@ -112,6 +114,28 @@ public class BasePage {
             throw new Exception("Not able to click element due to " + e.getMessage());
         }
     }
+
+    public int getElementsCount(By element) throws Exception {
+        try {
+            new WebDriverWait(driver, ConfigFileReader.getConfigFileReader().getImplicitlyWait())
+                    .until(ExpectedConditions.elementToBeClickable(element));
+            return driver.findElements(element).size();
+        } catch (Exception e) {
+            throw new Exception("Unable to find Count of Elements " + e.getMessage());
+        }
+    }
+
+    public List<WebElement> getElements(By element) throws Exception {
+        try {
+            new WebDriverWait(driver, ConfigFileReader.getConfigFileReader().getImplicitlyWait())
+                    .until(ExpectedConditions.elementToBeClickable(element));
+            return driver.findElements(element);
+        } catch (Exception e) {
+            throw new Exception("Unable to Get List Of Elements " + e.getMessage());
+        }
+    }
+
+
 
     public boolean verifyElementDisplayed(By element) throws Exception {
         try {

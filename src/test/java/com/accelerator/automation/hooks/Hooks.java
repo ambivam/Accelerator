@@ -5,15 +5,14 @@ import java.util.List;
 
 import com.accelerator.automation.common.Constants;
 import com.accelerator.automation.common.World;
+
+
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Reporter;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.AfterStep;
-import cucumber.api.java.Before;
-import cucumber.api.java.BeforeStep;
+
 
 public class Hooks {
 
@@ -205,19 +204,29 @@ public class Hooks {
     }
 
     public void embedScreenshot(Scenario scenario) {
+        if(scenario.isFailed()){
+            String screenshotName = scenario.getName().replaceAll("","_");
+            byte [] sourcePath = ((TakesScreenshot)this.world.driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(sourcePath,"image/png",screenshotName);
+        }
+    }
+
+
+    /*public void embedScreenshotInSauceLabs(Scenario scenario) {
         if (scenario.isFailed()) {
             List<String> scenarioFailed = world.getSauceWebLink();
             try {
                 final byte[] screenshot = ((TakesScreenshot) this.world.driver).getScreenshotAs(OutputType.BYTES);
                 for (String links : scenarioFailed) {
                     scenario.embed(links.getBytes(StandardCharsets.UTF_8), "text/html");
+
                 }
                 scenario.embed(screenshot, "image/png");
             } catch (Exception e) {
                 System.out.println("Exception thrown while attaching screenshot");
             }
         }
-    }
+    }*/
 
 
 }

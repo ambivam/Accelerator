@@ -1,19 +1,16 @@
 package com.accelerator.automation.common;
 
-import com.accelerator.automation.drivers.OATSDriver;
 import com.accelerator.automation.drivers.RESTDriver;
 import com.accelerator.automation.drivers.SOAPDriver;
 import com.accelerator.automation.drivers.SeleniumGridDriver;
 import com.accelerator.automation.drivers.SauceLabsDriver;
 import com.accelerator.automation.drivers.WebDriverManager;
 
-import cucumber.api.Scenario;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+
+import io.cucumber.java.Scenario;
 import org.openqa.selenium.WebDriver;
 
 public class World {
@@ -35,21 +32,13 @@ public class World {
     SeleniumGridDriver gridDriver = new SeleniumGridDriver(this);
     RESTDriver restDriver = new RESTDriver(this);
     SOAPDriver soapDriver = new SOAPDriver(this);
-    OATSDriver oatsDriver = new OATSDriver(this);
+
     public WebDriver driver;
     public WebDriver ieDriver;
     public WebDriver exeDriver;
 	public WebDriver ieSauceDriver;
     public WebDriver ieCommonDriver;
     public Scenario scenario;
-
-    Map<String, String> customerDetails = new HashMap<String, String>();
-    Map<String, String> creditCardDetails = new HashMap<String, String>();
-    Map<String, String> orderDetails = new HashMap<String, String>();
-    Map<String, String> coachId = new HashMap<String, String>();
-    Map<String, String> existingCustomerDetails = new HashMap<String, String>();
-    Map<String, String> updateAccountAddress = new HashMap<String, String>();
-    Map<String, String> sacCustDetails = new HashMap<String, String>();
 
     private boolean isMobile;
     private String mobilePlatform;
@@ -92,21 +81,7 @@ public class World {
         return browserVersion;
     }
 
-    public Map<String, String> getCoachID() {
-        return coachId;
-    }
 
-    public Map<String, String> getCreditCardDetails() {
-        return creditCardDetails;
-    }
-
-    public Map<String, String> getCustomerDetails() {
-        return customerDetails;
-    }
-
-    public Map<String, String> getExistingCustomerdetails() {
-        return existingCustomerDetails;
-    }
 
     public WebDriver getIEDriver() {
         if(this.driverType.equals(Constants.DRIVERTYPE.SAUCE)) {
@@ -120,17 +95,7 @@ public class World {
         return locale;
     }
 
-    public OATSDriver getOatsDriver() {
-        return oatsDriver;
-    }
 
-    public Map<String, String> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public String getOrderNum() {
-        return orderNum;
-    }
 
     public String getPlatform() {
         return platform;
@@ -164,10 +129,6 @@ public class World {
         return tunnelRequired;
     }
 
-    public Map<String, String> getUpdateAccountDetails() {
-        return updateAccountAddress;
-    }
-
     public void setBrowser(String browser) {
         this.browser = browser;
     }
@@ -180,41 +141,11 @@ public class World {
         this.browserVersion = browserVersion;
     }
 
-    public void setCoachID(String key, String value) {
-
-        this.coachId.put(key, value);
-    }
-
-    public void setCreditDetails(String key, String value) {
-
-        this.creditCardDetails.put(key, value);
-    }
-
-    public void setCustomerDetails(String key, String value) {
-
-        this.customerDetails.put(key, value);
-    }
-
-      public void setExistingCustomerdetails(String key, String value) {
-        this.existingCustomerDetails.put(key, value);
-    }
 
     public void setLocale(String locale) {
         this.locale = locale;
     }
 
-    public void setOatsDriver(OATSDriver oatsDriver) {
-        this.oatsDriver = oatsDriver;
-    }
-
-    public void setOrderDetails(String key, String value) {
-
-        this.orderDetails.put(key, value);
-    }
-
-    public void setOrderNum(String orderNum) {
-        this.orderNum = orderNum;
-    }
 
     public void setPlatform(String platform) {
         this.platform = platform;
@@ -244,17 +175,7 @@ public class World {
         this.tunnelRequired = tunnelRequired;
     }
 
-    public void setUpdateAccountDetails(String key, String value) {
-        this.updateAccountAddress.put(key, value);
-    }
 
-    public Map<String, String> getSACDetails() {
-        return sacCustDetails;
-    }
-
-    public void setSACDetails(String key, String value) {
-        this.sacCustDetails.put(key, value);
-    }
 
     public String getMobilePlatform() {
         return mobilePlatform;

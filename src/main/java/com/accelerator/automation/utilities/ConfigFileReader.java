@@ -100,6 +100,14 @@ public class ConfigFileReader {
 			throw new RuntimeException(url + " url not specified in the Configuration.properties file.");
 	}
 
+	public String getECOMUrl() {
+		String url = properties.getProperty("ECOM_URL");
+		if (url != null)
+			return url;
+		else
+			throw new RuntimeException(url + " url not specified in the Configuration.properties file.");
+	}
+
 	public String getCOOUserName() {
 		String userName = properties.getProperty("Coach_Username");
 		if (userName != null && !userName.isEmpty())

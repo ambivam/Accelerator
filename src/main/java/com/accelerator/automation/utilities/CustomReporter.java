@@ -1,8 +1,11 @@
 package com.accelerator.automation.utilities;
 
+import io.cucumber.plugin.ConcurrentEventListener;
+import io.cucumber.plugin.event.*;
+
 import java.util.List;
 
-import cucumber.api.event.ConcurrentEventListener;
+/*import cucumber.api.event.ConcurrentEventListener;
 import cucumber.api.event.EmbedEvent;
 import cucumber.api.event.EventHandler;
 import cucumber.api.event.EventPublisher;
@@ -13,10 +16,10 @@ import cucumber.api.event.TestRunStarted;
 import cucumber.api.event.TestSourceRead;
 import cucumber.api.event.TestStepFinished;
 import cucumber.api.event.TestStepStarted;
-import cucumber.api.event.WriteEvent;
+import cucumber.api.event.WriteEvent;*/
 
 
-public class CustomReporter implements ConcurrentEventListener{
+public class CustomReporter implements ConcurrentEventListener {
 
 	@Override
 	public void setEventPublisher(EventPublisher publisher) {
