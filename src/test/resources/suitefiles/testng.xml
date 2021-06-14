@@ -3,9 +3,17 @@
 <suite name="Suite" parallel = "tests" thread-count="5">
   <test name="Test1"  >
     <!--Driver type, Make sure to choose one of this (Sauce/Grid/Local)  don't choose whatever you need -->
-    <parameter name="driverType" value="grid" />
-    <parameter name="browser" value="chrome" />
+    <parameter name="driverType" value="sauce" />
+
+    <!-- App Related Properties -->
     <parameter name="locale" value="US_en" />
+    <parameter name="tunnel" value="yes" />
+
+    <!-- Browser Related Propertiess -->
+    <!-- Should be one of the browser (chrome/safari/firefox/iexplorer/edge-->
+    <parameter name="browser" value="chrome" />
+    <parameter name="browserVersion" value="74" />
+    <parameter name="browserPlatform" value="Windows 10" />
 
     <!-- Test case to run -->
     <classes>

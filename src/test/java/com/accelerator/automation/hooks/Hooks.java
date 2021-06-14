@@ -26,8 +26,7 @@ public class Hooks {
     @Before
     public void before(Scenario scenario) throws Exception {
         try {
-            world.setSauceTunnelId(System.getenv("TUNNEL_IDENTIFIER"));
-            System.out.println("The Tunnel id is : "+world.getSauceTunnelId());
+
             this.scenDesc = scenario.getName();
             world.setScenario(scenario);
 
@@ -61,18 +60,11 @@ public class Hooks {
                     break;
             }
 
-            //Sauce Properties
-            /*String tunnelRequired = System.getProperty("tunnel");
-            if (tunnelRequired != null && !tunnelRequired.isEmpty()) {
-                world.setTunnelRequired(tunnelRequired);
-            } else {
-                world.setTunnelRequired(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("tunnel"));
-            }*/
+
 
             //Browser Related Properties
             String browser = System.getProperty("browser");
-            /*String browserVersion = System.getProperty("browserVersion");
-            String browserPlatform = System.getProperty("browserPlatform");*/
+
             if (browser != null && !browser.isEmpty()) {
                 world.setBrowser(browser);
             } else {
@@ -103,7 +95,27 @@ public class Hooks {
             }
 
 
-            /*if (browserVersion != null && !browserVersion.isEmpty()) {
+
+        if(driverType.toLowerCase().equalsIgnoreCase(String.valueOf(Constants.DRIVERTYPE.SAUCE))){
+
+            System.out.println("SAUCE DRIVER TYPE IS "+ String.valueOf(Constants.DRIVERTYPE.SAUCE));
+
+            //Sauce Properties
+            world.setSauceTunnelId(System.getenv("TUNNEL_IDENTIFIER"));
+            System.out.println("The Tunnel id is : "+world.getSauceTunnelId());
+
+
+            String tunnelRequired = System.getProperty("tunnel");
+            if (tunnelRequired != null && !tunnelRequired.isEmpty()) {
+                world.setTunnelRequired(tunnelRequired);
+            } else {
+                world.setTunnelRequired(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("tunnel"));
+            }
+
+            String browserVersion = System.getProperty("browserVersion");
+            String browserPlatform = System.getProperty("browserPlatform");
+
+            if (browserVersion != null && !browserVersion.isEmpty()) {
                 world.setBrowserVersion(browserVersion);
             } else {
                 world.setBrowserVersion(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserVersion"));
@@ -112,7 +124,8 @@ public class Hooks {
                 world.setBrowserPlatform(browserPlatform);
             } else {
                 world.setBrowserPlatform(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserPlatform"));
-            }*/
+            }
+            }
 
             //Mobile Related Properties
             /*String isMobile = System.getProperty("isMobile");
