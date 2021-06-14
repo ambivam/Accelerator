@@ -27,19 +27,20 @@ public class Hooks {
     public void before(Scenario scenario) throws Exception {
         try {
             world.setSauceTunnelId(System.getenv("TUNNEL_IDENTIFIER"));
+            System.out.println("The Tunnel id is : "+world.getSauceTunnelId());
             this.scenDesc = scenario.getName();
             world.setScenario(scenario);
 
             //App Related properties
             String locale = System.getProperty("locale");
-            String driverType = System.getProperty("driverType");
+
             if (locale != null && !locale.isEmpty()) {
                 world.setLocale(locale);
             } else {
                 world.setLocale(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("locale"));
             }
 
-
+            String driverType = System.getProperty("driverType");
             if (driverType != null && !driverType.isEmpty()) {
             } else {
                 driverType = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("driverType");
@@ -61,17 +62,17 @@ public class Hooks {
             }
 
             //Sauce Properties
-            String tunnelRequired = System.getProperty("tunnel");
+            /*String tunnelRequired = System.getProperty("tunnel");
             if (tunnelRequired != null && !tunnelRequired.isEmpty()) {
                 world.setTunnelRequired(tunnelRequired);
             } else {
                 world.setTunnelRequired(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("tunnel"));
-            }
+            }*/
 
             //Browser Related Properties
             String browser = System.getProperty("browser");
-            String browserVersion = System.getProperty("browserVersion");
-            String browserPlatform = System.getProperty("browserPlatform");
+            /*String browserVersion = System.getProperty("browserVersion");
+            String browserPlatform = System.getProperty("browserPlatform");*/
             if (browser != null && !browser.isEmpty()) {
                 world.setBrowser(browser);
             } else {
@@ -102,7 +103,7 @@ public class Hooks {
             }
 
 
-            if (browserVersion != null && !browserVersion.isEmpty()) {
+            /*if (browserVersion != null && !browserVersion.isEmpty()) {
                 world.setBrowserVersion(browserVersion);
             } else {
                 world.setBrowserVersion(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserVersion"));
@@ -111,10 +112,10 @@ public class Hooks {
                 world.setBrowserPlatform(browserPlatform);
             } else {
                 world.setBrowserPlatform(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browserPlatform"));
-            }
+            }*/
 
             //Mobile Related Properties
-            String isMobile = System.getProperty("isMobile");
+            /*String isMobile = System.getProperty("isMobile");
             String mobilePlatform = System.getProperty("mobilePlatform");
             String mobileDeviceName = System.getProperty("mobileDeviceName");
             String mobileDeviceOrientation = System.getProperty("mobileDeviceOrientation");
@@ -161,7 +162,7 @@ public class Hooks {
                 world.setMobileBrowser(mobileBrowser);
             } else {
                 world.setMobileBrowser(Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("mobileBrowser"));
-            }
+            }*/
 
             world.getDriver();
             System.out.println("Scenario IS " + scenario.getName());

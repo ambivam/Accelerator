@@ -33,42 +33,53 @@ public class SeleniumGridDriver {
 			File file = new File("config");
 			URL[] urls = {file.toURI().toURL()};
 			ClassLoader loader = new URLClassLoader(urls);
+
+			System.out.println("The default locale is : "+Locale.getDefault());
+
 			configLib = ResourceBundle.getBundle("config",Locale.getDefault(),loader);
-			
+
+
+
 			//Selenium Grid Hub name
 			GRID_HOSTNAME = configLib.getString("GRID_HOSTNAME");
+			System.out.println("The grid host name is :" + GRID_HOSTNAME);
 			//Selenium hub Port
 			GRID_PORT = configLib.getString("GRID_PORT");
+			System.out.println("The grid port is :" + GRID_PORT);
 			//selenium grid url
 			GRID_URL = configLib.getString("GRID_URL").replaceFirst("HOSTIP", GRID_HOSTNAME).replaceFirst("PORT", GRID_PORT);
-			
-			
+			//GRID_URL = configLib.getString("GRID_URL");
+
+			System.out.println("The grid url is : "+GRID_URL);
+
+
 			
 			if(world.getBrowser().equalsIgnoreCase("firefox"))
 			{
 				//firefox capabilities
 				caps = DesiredCapabilities.firefox();
 				caps.setBrowserName("firefox");
-				if(world.getPlatform().equalsIgnoreCase("windows")) {
+				/*if(world.getPlatform().equalsIgnoreCase("windows")) {
 					
 					if(world.getPlatformVersion().equalsIgnoreCase("10")) {
 						caps.setPlatform(Platform.WIN10);
 					}
-				}
+				}*/
 				
 				this.driver=new RemoteWebDriver(new URL(GRID_URL), caps);		
 			}
 			else if(world.getBrowser().equalsIgnoreCase("chrome"))
 			{
+				System.out.println("The chrome in chrome Browser is 12345 : "+ world.getBrowser());
 				//chrome capabilities
 				caps = DesiredCapabilities.chrome();
 				caps.setBrowserName("chrome");
-				if(world.getPlatform().equalsIgnoreCase("windows")) {
+				/*if(world.getPlatform().equalsIgnoreCase("windows")) {
 					
 					if(world.getPlatformVersion().equalsIgnoreCase("10")) {
 						caps.setPlatform(Platform.WIN10);
 					}
-				}
+				}*/
 				
 				this.driver=new RemoteWebDriver(new URL(GRID_URL), caps);
 			}

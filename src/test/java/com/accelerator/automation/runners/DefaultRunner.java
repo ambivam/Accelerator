@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 		glue = {"com.accelerator.automation.stepdefs.ecom","com.accelerator.automation.hooks"},
 		plugin = {"pretty",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"timeline:test-output-thread/"},
+				"timeline:target/test-output-thread/"},
 		features = {"src/test/resources/features/ECOM/"}
 	)
 

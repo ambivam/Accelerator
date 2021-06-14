@@ -121,9 +121,9 @@
 				<version>2.22.2</version>
 				<configuration>
 					<!-- Suite testng xml file to consider for test execution -->
-					<!-- Need to pass testng.xml files as argument from command line -->
+					<!-- Need to pass 1testng.xml files as argument from command line -->
 					<suiteXmlFiles>  
-						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile> 
+						<suiteXmlFile>src/test/resources/suitefiles/${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
