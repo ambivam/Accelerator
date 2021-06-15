@@ -3,11 +3,11 @@
 <suite name="Suite" parallel = "tests" thread-count="5">
   <test name="Test1"  >
     <!--Driver type, Make sure to choose one of this (Sauce/Grid/Local)  don't choose whatever you need -->
-    <parameter name="driverType" value="sauce" />
+    <parameter name="driverType" value="local" />
 
     <!-- App Related Properties -->
     <parameter name="locale" value="US_en" />
-    <parameter name="tunnel" value="yes" />
+    <parameter name="tunnel" value="no" />
 
     <!-- Browser Related Propertiess -->
     <!-- Should be one of the browser (chrome/safari/firefox/iexplorer/edge-->
